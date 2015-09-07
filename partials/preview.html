@@ -1,0 +1,38 @@
+﻿<div class="container">
+    <div class="row">
+        <a class="return-link" ng-href="#/files?dir={{fileParentDir | URI:'encode'}}&orderBy={{orderBy}}&direction={{direction}}">Return to <b>{{fileParentDir}}</b></a>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 text-center">
+            <preview file="file" ng-if="file"></preview>
+        </div>
+        <div class="col-sm-6 list-group">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>Name:</td>
+                        <td>{{file.name | fileName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Type:</td>
+                        <td>{{fileType}}</td>
+                    </tr>
+                    <tr>
+                        <td>Parent directory:</td>
+                        <td>{{fileParentDir}}</td>
+                    </tr>
+                    <tr>
+                        <td>Date:</td>
+                        <td>{{file.date | date :'medium'}}</td>
+                    </tr>
+                    <tr>
+                        <td>Size:</td>
+                        <td>{{file.size | size:'Mb':3}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div class="btn btn-success" ng-click="rename(file)">Rename</div>
+        </div>
+    </div>
+</div>

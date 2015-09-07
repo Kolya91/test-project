@@ -1,0 +1,40 @@
+﻿<table class="table table-striped files-table">
+    <thead>
+        <tr>
+            <th ng-click="changeSortParams('name')" ng-class="{'selected': orderBy === 'name', 'desc':direction === 'desc'}">
+                <span>Name</span>
+            </th>
+            <th>Size</th>
+            <th ng-click="changeSortParams('digitsSum')" ng-class="{'selected': orderBy === 'digitsSum', 'desc':direction === 'desc'}">
+                <span>Date added</span>
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="previous-directory" ng-hide="parentDir === dir">
+            <td>
+                <a ng-href="" ng-click="goToDirectory(parentDir)">...</a>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr ng-repeat="file in files">
+            <td>
+                <a ng-href="" ng-hide="file.directory" ng-click="goToFilePage(file)">{{file.name | fileName}}</a>
+                <a ng-href="" ng-show="file.directory" ng-click="goToDirectory(file.name)">{{file.name | fileName}}</a>
+            </td>
+            <td>
+                <div ng-hide="file.directory">{{file.size | size:'Mb':3}}</div>
+            </td>
+            <td>
+                <span class="text-muted">{{file.date | date :'medium'}}</span>
+            </td>
+            <td>
+                <a href="" ng-click="rename(file)" >Rename</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
